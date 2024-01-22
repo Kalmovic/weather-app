@@ -1,7 +1,7 @@
 import { TempUnit, TempUnitEnum } from "@/lib/utils";
 import { Flex } from "@radix-ui/themes";
 import { Tabs, TabsList, TabsTrigger } from "./tabs";
-import { useTempUnitStore } from "@/hooks/useTempUnit";
+import { useTempUnitStore } from "@/providers/useTempUnit";
 
 export function TempSwitcher() {
   const { tempUnit, setTempUnit } = useTempUnitStore();
