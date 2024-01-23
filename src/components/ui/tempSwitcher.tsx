@@ -1,9 +1,11 @@
-import { TempUnit, TempUnitEnum } from "@/lib/utils";
+import { TempUnit, TempUnitEnum, cn } from "@/lib/utils";
 import { Flex } from "@radix-ui/themes";
 import { Tabs, TabsList, TabsTrigger } from "./tabs";
 import { useTempUnitStore } from "@/providers/useTempUnit";
+import { useMediaQuery } from "usehooks-ts";
 
 export function TempSwitcher() {
+  const matches = useMediaQuery("(min-width: 768px)");
   const { tempUnit, setTempUnit } = useTempUnitStore();
   const handleTempChange = (temp: TempUnit) => {
     localStorage.setItem("tempUnit", temp);
@@ -11,9 +13,19 @@ export function TempSwitcher() {
   };
 
   return (
-    <Flex className="w-full">
-      <Tabs defaultValue={tempUnit} className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+    <Flex>
+      <Tabs
+        defaultValue={tempUnit}
+        className={cn("h-fit", {
+          "w-full": !matches,
+        })}
+      >
+        <TabsList
+          className={cn("grid w-full grid-cols-2", {
+            "bg-primary text-background w-fit": matches,
+            "w-full": !matches,
+          })}
+        >
           <TabsTrigger
             value={TempUnitEnum.Celcius}
             onClick={() => handleTempChange(TempUnitEnum.Celcius)}
