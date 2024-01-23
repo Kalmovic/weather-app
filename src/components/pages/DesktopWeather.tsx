@@ -33,14 +33,14 @@ export function DesktopWeather({
       <aside
         className="p-4 bg-white"
         style={{
+          borderRadius: 18,
           width: "30%",
-          height: "calc(100vh - 140px)",
         }}
       >
         <Flex
           direction="column"
           gap="3"
-          className={cn({
+          className={cn("round-lg", {
             "opacity-50 transition-opacity": isLoading,
           })}
         >
@@ -50,7 +50,7 @@ export function DesktopWeather({
             justify="center"
             direction="row"
             gap="5"
-            className="w-full p-20"
+            className="w-full p-16"
           >
             <Flex justify="center" direction="row" gap="3">
               <span className="text-8xl">
@@ -65,7 +65,7 @@ export function DesktopWeather({
             <Flex
               direction="column"
               justify="between"
-              className="text-muted-foreground"
+              className="text-muted-foreground py-2"
             >
               <Flex align="center" direction="row" gap="2" className="w-full">
                 <Card className="p-1.5 rounded-full flex align-top bg-red-100 border-red-300 border-1">
@@ -155,7 +155,7 @@ export function DesktopWeather({
               <TabsTrigger value="Today">Today</TabsTrigger>
               <TabsTrigger value="Forecast">Forecast</TabsTrigger>
             </TabsList>
-            <TabsContent value="Today" className="overflow-x-scroll">
+            <TabsContent value="Today">
               <WeatherDetailsByHour weather={weather} />
             </TabsContent>
             <TabsContent value="Forecast">

@@ -12,7 +12,7 @@ export function WeatherDetailsByHour({
 }) {
   const { tempUnit } = useTempUnitStore();
   return (
-    <Flex direction="column" className="overflow-auto">
+    <Flex direction="column">
       <Text size="4" my="2">
         Today
       </Text>
