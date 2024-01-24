@@ -129,15 +129,19 @@ export interface WeatherResponse {
 }
 
 export async function getWeather(cityId: string) {
+  console.log(cityId);
+
   const cityName = cityId.split("_").join(" ");
   const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_WEATHER_STACK_API}&q=${cityName}&aqi=no&days=7&aqi=no&alerts=no`,
+    `https://api.weatherapi.com/v1/forecast.json?key=${process.env.VITE_WEATHER_STACK_API}&q=${cityName}&aqi=no&days=7&aqi=no&alerts=no`,
     {
       headers: {
         "Cache-Control": "max-age=20",
       },
     }
   );
+  console.log(response);
+
   if (response.status !== 200) {
     throw new Error("Failed to fetch weather data");
   }

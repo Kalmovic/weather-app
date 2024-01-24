@@ -80,15 +80,15 @@ const CustomTooltip = ({
 };
 
 const CustomizedAxisTick = (props: any) => {
-  const { payload } = props;
+  const { payload, x, y } = props;
   return (
     <g>
       <text
-        x={0}
-        y={0}
+        x={x}
+        y={y}
         dy={16}
         fill="currentColor"
-        className={cn("text-xs text-muted-foreground -mt-4", {
+        className={cn("text-xs text-muted-foreground", {
           "text-right": props.index === 0,
         })}
         fontSize={5}
@@ -143,8 +143,9 @@ export function WeatherDetailsByHour({
             <Tooltip content={CustomTooltip} />
             <Area
               yAxisId="left"
-              animationDuration={0}
-              type="monotone"
+              animationDuration={2}
+              animationEasing="ease-in-out"
+              type="basis"
               dataKey={tempUnit === TempUnitEnum.Celcius ? "temp_c" : "temp_f"}
               strokeWidth={3}
               fill={"url(#colorBlue)"}
