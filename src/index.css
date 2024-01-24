@@ -18,12 +18,3 @@
 html {
   height: 100%;
 }
-
-body {
-  /* background: linear-gradient(
-    120deg,
-    #fee3bc 23.22%,
-    #f39876 99.52%
-  ) !important; */
-  min-height: 100vmax;
-}

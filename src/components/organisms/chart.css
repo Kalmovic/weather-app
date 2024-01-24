@@ -1,0 +1,13 @@
+.recharts-cartesian-axis-line {
+  stroke: #e0e0e0;
+}
+
+.recharts-cartesian-axis-tick-line {
+  stroke: #e0e0e0;
+  @media (max-width: 768px) {
+    display: none;
+  }
+  :nth-child(0) {
+    padding-left: 1rem;
+  }
+}
