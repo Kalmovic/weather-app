@@ -13,6 +13,7 @@ import { ErrorBoundary } from "./components/organisms/ErrorBoundary";
 const router = createBrowserRouter([
   {
     path: "/",
+    hasErrorBoundary: true,
     element: <Root />,
     errorElement: <ErrorBoundary root />,
     children: [
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             loader: ({ params }) => weatherLoader(params.cityId as string),
           },
         ],
+      },
+      {
+        path: "*",
+        element: <ErrorBoundary />,
       },
     ],
   },
