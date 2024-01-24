@@ -14,7 +14,12 @@ export function Forecast({
 
   return (
     <Flex direction="column">
-      <Text size="3" my="2" className="font-medium">
+      <Text
+        size="3"
+        my="2"
+        className="font-medium"
+        aria-label="Forecast (7 days)"
+      >
         Forecast (7 days)
       </Text>
       <Flex gap="2" className="overflow-x-auto">

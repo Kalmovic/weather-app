@@ -384,7 +384,7 @@ export function DesktopWeather({
               >
                 <Flex align="center" gap="2">
                   <Text size="3" className="text-muted-foreground">
-                    Chance of rain
+                    Chance of Rain
                   </Text>
                 </Flex>
                 <Flex align="start" direction="row" gap="1">

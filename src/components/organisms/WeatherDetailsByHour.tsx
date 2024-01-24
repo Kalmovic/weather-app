@@ -129,7 +129,12 @@ export function WeatherDetailsByHour({
   const { tempUnit } = useTempUnitStore();
   return (
     <Flex direction="column">
-      <Text size="3" my="2" className="font-medium">
+      <Text
+        size="3"
+        my="2"
+        className="font-medium"
+        aria-label="Today's temperature"
+      >
         Today's temperature
       </Text>
       <Flex
@@ -168,17 +173,10 @@ export function WeatherDetailsByHour({
               tick={<CustomizedAxisTick />}
               interval={matches ? 2 : 6}
             />
-            <Tooltip
-              content={CustomTooltip}
-              coordinate={{
-                x: 0,
-                y: 0,
-              }}
-              active={true}
-            />
+            <Tooltip content={CustomTooltip} active={true} />
             <Area
               yAxisId="left"
-              animationDuration={2}
+              animationDuration={400}
               animationEasing="ease-in-out"
               type="basis"
               dataKey={tempUnit === TempUnitEnum.Celcius ? "temp_c" : "temp_f"}
