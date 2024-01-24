@@ -11,6 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   TooltipProps,
+  YAxis,
 } from "recharts";
 import { useMediaQuery } from "usehooks-ts";
 import "./chart.css";
@@ -99,6 +100,26 @@ const CustomizedAxisTick = (props: any) => {
   );
 };
 
+const CustomizedYAxisTick = (props: any) => {
+  const { payload, x, y } = props;
+  return (
+    <g>
+      <text
+        x={x}
+        y={y}
+        dx={-16}
+        fill="currentColor"
+        className={cn("text-xs text-muted-foreground text-right", {
+          hidden: props.index === 0,
+        })}
+        fontSize={5}
+      >
+        {payload.value}º
+      </text>
+    </g>
+  );
+};
+
 export function WeatherDetailsByHour({
   weather,
 }: {
@@ -109,7 +130,7 @@ export function WeatherDetailsByHour({
   return (
     <Flex direction="column">
       <Text size="3" my="2" className="font-medium">
-        Today
+        Today's temperature
       </Text>
       <Flex
         style={{
@@ -121,11 +142,11 @@ export function WeatherDetailsByHour({
       >
         <ResponsiveContainer>
           <AreaChart
-            className={cn("", {
+            className={cn("w-full", {
               "min-w-[600px]": matches,
             })}
             data={weather.forecast.forecastday[0].hour}
-            margin={{ top: 10, left: 0, bottom: 0 }}
+            margin={{ top: 10, left: -30, bottom: 0, right: 0 }}
           >
             <defs>
               <linearGradient id="colorBlue" x1="0" y1="0" x2="0" y2="1">
@@ -133,6 +154,13 @@ export function WeatherDetailsByHour({
                 <stop offset="95%" stopColor="#FFFFFF" stopOpacity={0.1} />
               </linearGradient>
             </defs>
+            <YAxis
+              yAxisId="left"
+              tick={<CustomizedYAxisTick />}
+              tickFormatter={(value) => {
+                return `${value}º`;
+              }}
+            />
             <XAxis
               dataKey={(entry) => {
                 return format(new Date(entry.time), "h a");
@@ -140,7 +168,14 @@ export function WeatherDetailsByHour({
               tick={<CustomizedAxisTick />}
               interval={matches ? 2 : 6}
             />
-            <Tooltip content={CustomTooltip} />
+            <Tooltip
+              content={CustomTooltip}
+              coordinate={{
+                x: 0,
+                y: 0,
+              }}
+              active={true}
+            />
             <Area
               yAxisId="left"
               animationDuration={2}
