@@ -131,7 +131,7 @@ export interface WeatherResponse {
 export async function getWeather(cityId: string) {
   const cityName = cityId.split("_").join(" ");
   const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${process.env.VITE_WEATHER_STACK_API}&q=${cityName}&aqi=no&days=7&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${process.env.VITE_WEATHER_STACK_API}&q=${cityName}&aqi=no&days=7&aqi=no&alerts=no`,
     {
       headers: {
         "Cache-Control": "max-age=20",
