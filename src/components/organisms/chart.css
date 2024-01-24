@@ -7,7 +7,4 @@
   @media (max-width: 768px) {
     display: none;
   }
-  :nth-child(0) {
-    padding-left: 1rem;
-  }
 }
