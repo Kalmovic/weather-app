@@ -131,13 +131,12 @@ export interface WeatherResponse {
 export async function getWeather(cityId: string) {
   const cityName = cityId.split("-").join(" ");
   const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=cc4874072fe84a688bb143039242401&q=${cityName}&aqi=no&days=7&aqi=no&alerts=no`,
+    `https://cors-anywhere.herokuapp.com/https://api.weatherapi.com/v1/forecast.json?key=cc4874072fe84a688bb143039242401&q=${cityName}&aqi=no&days=7&aqi=no&alerts=no`,
     {
       headers: {
         "Cache-Control": "max-age=20",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin":
-          "https://weather-app-challenge-jk.netlify.app/",
+        "Access-Control-Allow-Origin": "*",
       },
     }
   );
