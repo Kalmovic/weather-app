@@ -213,7 +213,7 @@ export function DesktopWeather({
           Today's highlights
         </Text>
         <div className="grid grid-cols-3 gap-4">
-          <Card>
+          <Card aria-label="wind">
             <CardContent className="p-4">
               <Flex
                 justify="between"
@@ -287,7 +287,7 @@ export function DesktopWeather({
               >
                 <Flex align="center" gap="2">
                   <Text size="3" className="text-muted-foreground">
-                    Cloud cover
+                    Cloud Cover
                   </Text>
                 </Flex>
                 <Flex align="start" direction="row" gap="1">
