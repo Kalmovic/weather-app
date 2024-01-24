@@ -6,9 +6,11 @@ import {
   RouterProvider,
   createBrowserRouter,
   Navigate,
+  Link,
 } from "react-router-dom";
 import Weather, { loader as weatherLoader } from "./routes/weather";
 import { MapPinOff } from "lucide-react";
+import { Flex, Text } from "@radix-ui/themes";
 
 const router = createBrowserRouter([
   {
@@ -24,19 +26,22 @@ const router = createBrowserRouter([
         element: <Weather />,
         loader: weatherLoader,
         errorElement: (
-          <div
-            className="flex flex-col gap-2 items-center justify-center h-full bg-muted"
+          <Flex
+            className="flex flex-col gap-2 items-center justify-center h-full bg-sky-50 w-full"
             style={{
-              height: "calc(100vh )",
+              height: "calc(100vh)",
             }}
           >
-            <h1 className="text-4xl font-bold">Oops!</h1>
+            <Text className="text-4xl font-bold">Oops!</Text>
             <MapPinOff className="w-24 h-24 mt-4" />
-            <p className="text-xl font-semibold">City not found</p>
-            <p className="text-md text-center max-w-[200px]">
+            <Text className="text-xl font-semibold">City not found</Text>
+            <Text className="text-md text-center max-w-[200px]">
               Please check the spelling or try another city
-            </p>
-          </div>
+            </Text>
+            <Link to="/" className="text-primary" role="button">
+              Go back home
+            </Link>
+          </Flex>
         ),
       },
     ],

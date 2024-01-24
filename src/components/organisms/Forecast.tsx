@@ -14,10 +14,10 @@ export function Forecast({
 
   return (
     <Flex direction="column">
-      <Text size="4" my="2">
+      <Text size="3" my="2" className="font-medium">
         Forecast (7 days)
       </Text>
-      <Flex gap="2" pb="2" className="overflow-x-auto">
+      <Flex gap="2" className="overflow-x-auto">
         {forecast.forecastday.map((forecast) => {
           return (
             <Card className="min-w-[79px]">

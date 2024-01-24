@@ -19,6 +19,8 @@ import { TempSwitcher } from "../ui/tempSwitcher";
 import { Progress } from "../ui/progress";
 import { Separator } from "../ui/separator";
 import { format } from "date-fns";
+import { useMediaQuery } from "usehooks-ts";
+import Spotlight, { SpotlightCard } from "../organisms/Spolight";
 
 export function DesktopWeather({
   weather,
@@ -29,7 +31,7 @@ export function DesktopWeather({
 }) {
   const { tempUnit } = useTempUnitStore();
   return (
-    <Flex className="max-w-[1440px] m-auto w-full">
+    <Flex className="max-w-[1440px] m-auto w-full p-4 gap-4">
       <aside
         className="p-4 bg-white"
         style={{
@@ -45,76 +47,100 @@ export function DesktopWeather({
           })}
         >
           <SearchCity />
-
-          <Flex
-            justify="center"
-            direction="row"
-            gap="5"
-            className="w-full p-16"
+          <Spotlight
+            className="justify-center flex flex-col h-full border-sky-50 border-2 rounded-lg"
+            style={{
+              height: "100%",
+              gridArea: "cards",
+            }}
           >
-            <Flex justify="center" direction="row" gap="3">
-              <span className="text-8xl">
-                {tempUnit === TempUnitEnum.Celcius
-                  ? weather.current.temp_c
-                  : weather.current.temp_f}
-              </span>
-              <Flex direction="column" justify="between">
-                <span className="text-4xl">º</span>
-              </Flex>
-            </Flex>
-            <Flex
-              direction="column"
-              justify="between"
-              className="text-muted-foreground py-2"
-            >
-              <Flex align="center" direction="row" gap="2" className="w-full">
-                <Card className="p-1.5 rounded-full flex align-top bg-red-100 border-red-300 border-1">
-                  <ArrowUpIcon
-                    className="stroke-red-500"
-                    style={{
-                      width: 14,
-                      height: 14,
-                    }}
-                  />
-                </Card>
-                <Flex>
-                  <Text className="text-md font-medium">
+            <SpotlightCard>
+              <Flex
+                justify="center"
+                direction="row"
+                gap="5"
+                className="w-full p-16"
+              >
+                <Flex
+                  justify="center"
+                  direction="row"
+                  gap="3"
+                  className="min-w-[148px]"
+                >
+                  <span className="text-7xl">
                     {tempUnit === TempUnitEnum.Celcius
-                      ? Math.round(
-                          weather.forecast.forecastday[0].day.maxtemp_c
-                        )
-                      : Math.round(
-                          weather.forecast.forecastday[0].day.maxtemp_f
-                        )}
-                  </Text>
-                  <span className="text-sx">º</span>
+                      ? Math.round(weather.current.temp_c)
+                      : Math.round(weather.current.temp_f)}
+                  </span>
+                  <Flex direction="column" justify="between">
+                    <span className="text-4xl">º</span>
+                  </Flex>
+                </Flex>
+                <Flex
+                  direction="column"
+                  justify="between"
+                  className="text-muted-foreground py-2"
+                >
+                  <Flex
+                    align="center"
+                    direction="row"
+                    gap="2"
+                    className="w-full"
+                  >
+                    <Card className="p-1.5 rounded-full flex align-top bg-red-100 border-red-300 border-1">
+                      <ArrowUpIcon
+                        className="stroke-red-500"
+                        style={{
+                          width: 14,
+                          height: 14,
+                        }}
+                      />
+                    </Card>
+                    <Flex className="min-w-[35px]">
+                      <Text className="text-md font-medium">
+                        {tempUnit === TempUnitEnum.Celcius
+                          ? Math.round(
+                              weather.forecast.forecastday[0].day.maxtemp_c
+                            )
+                          : Math.round(
+                              weather.forecast.forecastday[0].day.maxtemp_f
+                            )}
+                      </Text>
+                      <span className="text-sx">º</span>
+                    </Flex>
+                  </Flex>
+                  <Flex
+                    align="center"
+                    direction="row"
+                    gap="2"
+                    className="w-full"
+                  >
+                    <Card className="p-1.5 rounded-full bg-indigo-100 border-indigo-300 border-1">
+                      <ArrowDownIcon
+                        className="stroke-indigo-500"
+                        style={{
+                          width: 14,
+                          height: 14,
+                        }}
+                      />
+                    </Card>
+                    <Flex>
+                      <Text className="text-md font-medium">
+                        {tempUnit === TempUnitEnum.Celcius
+                          ? Math.round(
+                              weather.forecast.forecastday[0].day.mintemp_c
+                            )
+                          : Math.round(
+                              weather.forecast.forecastday[0].day.mintemp_f
+                            )}
+                      </Text>
+                      <span className="text-sx">º</span>
+                    </Flex>
+                  </Flex>
                 </Flex>
               </Flex>
-              <Flex align="center" direction="row" gap="2" className="w-full">
-                <Card className="p-1.5 rounded-full bg-indigo-100 border-indigo-300 border-1">
-                  <ArrowDownIcon
-                    className="stroke-indigo-500"
-                    style={{
-                      width: 14,
-                      height: 14,
-                    }}
-                  />
-                </Card>
-                <Flex>
-                  <Text className="text-md font-medium">
-                    {tempUnit === TempUnitEnum.Celcius
-                      ? Math.round(
-                          weather.forecast.forecastday[0].day.mintemp_c
-                        )
-                      : Math.round(
-                          weather.forecast.forecastday[0].day.mintemp_f
-                        )}
-                  </Text>
-                  <span className="text-sx">º</span>
-                </Flex>
-              </Flex>
-            </Flex>
-          </Flex>
+            </SpotlightCard>
+          </Spotlight>
           <Separator
             className="my-4"
             style={{
@@ -138,7 +164,10 @@ export function DesktopWeather({
             <Text>{weather.current.condition.text}</Text>
           </Flex>
           <Flex direction="column">
-            <Text size="4">{weather.location.name}</Text>
+            <Text size="4" className="text-primary">
+              {weather.location.name}
+            </Text>
+            <Text size="3">{weather.location.country}</Text>
             <Text size="2">
               {format(
                 new Date(weather.location.localtime_epoch),
@@ -148,8 +177,14 @@ export function DesktopWeather({
           </Flex>
         </Flex>
       </aside>
-      <Flex direction="column" gap="3" p="4" className="bg-sky-50 w-full">
-        <Flex className="justify-between">
+      <Flex direction="column" gap="3" className="bg-sky-50 w-full">
+        <Flex
+          direction={{
+            xs: "column-reverse",
+            md: "row",
+          }}
+          justify="between"
+        >
           <Tabs defaultValue="Today">
             <TabsList className="grid w-fit grid-cols-2">
               <TabsTrigger value="Today">Today</TabsTrigger>
@@ -162,11 +197,22 @@ export function DesktopWeather({
               <Forecast forecast={weather.forecast} />
             </TabsContent>
           </Tabs>
-          <Flex justify="end">
+          <Flex
+            justify={{
+              xs: "start",
+              md: "end",
+            }}
+            pb={{
+              xs: "2",
+              md: "0",
+            }}
+          >
             <TempSwitcher />
           </Flex>
         </Flex>
-        <Text>Today's highlights</Text>
+        <Text size="3" mt="2" className="font-medium">
+          Today's highlights
+        </Text>
         <div className="grid grid-cols-3 gap-4">
           <Card>
             <CardContent className="p-4">
