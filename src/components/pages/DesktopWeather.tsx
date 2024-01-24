@@ -19,7 +19,6 @@ import { TempSwitcher } from "../ui/tempSwitcher";
 import { Progress } from "../ui/progress";
 import { Separator } from "../ui/separator";
 import { format } from "date-fns";
-import { useMediaQuery } from "usehooks-ts";
 import Spotlight, { SpotlightCard } from "../organisms/Spolight";
 
 export function DesktopWeather({

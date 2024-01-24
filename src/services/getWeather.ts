@@ -120,7 +120,7 @@ interface ForecastDay {
   hour: Hour[];
 }
 
-interface WeatherResponse {
+export interface WeatherResponse {
   location: Location;
   current: Current;
   forecast: {

@@ -14,7 +14,6 @@ import {
 } from "recharts";
 import { useMediaQuery } from "usehooks-ts";
 import "./chart.css";
-import { ContentType } from "recharts/types/component/Tooltip";
 import {
   NameType,
   ValueType,
