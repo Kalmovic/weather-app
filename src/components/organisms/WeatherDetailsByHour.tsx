@@ -133,7 +133,7 @@ export function WeatherDetailsByHour({
         size="3"
         my="2"
         className="font-medium"
-        aria-label="Today's temperature"
+        aria-label="Todays temperature"
       >
         Today's temperature
       </Text>
