@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/weather/:cityId",
         element: <Weather />,
-        loader: weatherLoader,
+        loader: ({ params }) => weatherLoader(params.cityId as string),
         errorElement: (
           <Flex
             className="flex flex-col gap-2 items-center justify-center h-full bg-sky-50 w-full"

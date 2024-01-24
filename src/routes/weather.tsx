@@ -5,8 +5,8 @@ import { useMediaQuery } from "usehooks-ts";
 import { DesktopWeather } from "@/components/pages/DesktopWeather";
 import { MobileWeather } from "@/components/pages/MobileWeather";
 
-export async function loader({ params }: { params: { cityId: string } }) {
-  const weather = await getWeather(params.cityId);
+export async function loader(cityId: string) {
+  const weather = await getWeather(cityId);
   return { weather };
 }
 
