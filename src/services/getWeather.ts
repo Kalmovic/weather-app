@@ -136,7 +136,8 @@ export async function getWeather(cityId: string) {
       headers: {
         "Cache-Control": "max-age=20",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin":
+          "https://weather-app-challenge-jk.netlify.app/",
       },
     }
   );
