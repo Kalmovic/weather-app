@@ -146,3 +146,31 @@ export async function getWeather(cityId: string) {
   const data = (await response.json()) as WeatherResponse;
   return data;
 }
+
+export type AutoCompleteCitiesResponse = {
+  id: number;
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  url: string;
+}[];
+
+export async function getAutoCompleteCities(cityName: string) {
+  const response = await fetch(
+    `https://api.weatherapi.com/v1/search.json?key=cc4874072fe84a688bb143039242401&q=${cityName}`,
+    {
+      headers: {
+        "Cache-Control": "max-age=20",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    }
+  );
+  if (response.status !== 200) {
+    throw new Error("Failed to fetch weather data");
+  }
+  const data = (await response.json()) as AutoCompleteCitiesResponse;
+  return data;
+}
