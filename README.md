@@ -6,7 +6,7 @@ This is a simple weather app that uses the WeatherAPI to display the current wea
 
 This app took me approximately 4-5 days to complete.
 
-![Alt text](image.png)
+![show case app image](showcase.png)
 
 ## Features
 
