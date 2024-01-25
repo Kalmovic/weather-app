@@ -25,8 +25,6 @@ const CustomTooltip = ({
   payload,
 }: TooltipProps<ValueType, NameType>) => {
   const { tempUnit } = useTempUnitStore();
-  console.log(payload, active);
-
   if (active && payload && payload.length) {
     const data = payload[0].payload;
 
