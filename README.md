@@ -1,5 +1,7 @@
 # Weather App Challenge
 
+live demo: https://weather-app-challenge-jk.netlify.app
+
 ## Description
 
 This is a simple weather app that uses the WeatherAPI to display the current weather in a given city.
