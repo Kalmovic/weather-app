@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Weather App Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This is a simple weather app that uses the WeatherAPI to display the current weather in a given city.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This app took me approximately 4-5 days to complete.
 
-## Expanding the ESLint configuration
+![Alt text](image.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Search for a city
+- Display the current weather in that city
+- Display forecast (7 days) in that city
+- Display the weather for the next 24 hours in that city
+- Display weather information like humidity, wind speed, and more
+- Switch between Fahrenheit and Celsius
+- Cypress e2e tests
+- Error handling
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Tech Stack
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- React
+- Zustand
+- Tailwind
+- Shadcn/ui
+- Radix ui
+- date-fns
+- React Router Dom
+- Yup
+- Recharts
+- Cypress
+- Docker
+
+## Installation
+
+1. Clone the repo
+   ```sh
+   git clone [repo url]
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start the app
+   ```sh
+   npm start
+   ```
+4. Run the tests
+   ```sh
+   npx cypress open
+   ```
