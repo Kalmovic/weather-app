@@ -63,15 +63,15 @@ describe("template spec", () => {
       "Today's temperature"
     );
   });
-  it("searches for a city", () => {
-    cy.get("input").type("New York");
-    cy.get("button[type=submit]").click();
-    cy.get(".toaster > .group").should("be.visible");
-    cy.intercept(
-      "GET",
-      "https://api.weatherapi.com/v1/forecast.json?key=cc4874072fe84a688bb143039242401&q=New York&aqi=no&days=7&aqi=no&alerts=no"
-    ).as("getNYWeather");
-
+  it.only("searches for a city", () => {
+    cy.get(".rt-TextFieldInput").focus();
+    cy.get("input[role=combobox]").type("New York");
+    cy.get("a").contains("New York");
+    cy.get("a").click();
     cy.get(".text-primary").should("be.visible").contains("New York");
+    // show history
+    cy.get(".rt-TextFieldInput").focus();
+    cy.get("input[role=combobox]").type("New York");
+    cy.get("div[role=group] div:eq(0)").contains("New York");
   });
 });

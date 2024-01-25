@@ -20,6 +20,7 @@ import { Progress } from "../ui/progress";
 import { Separator } from "../ui/separator";
 import { format } from "date-fns";
 import Spotlight, { SpotlightCard } from "../organisms/Spolight";
+import { CommandDialogDemo } from "../command-auto-complete";
 
 export function DesktopWeather({
   weather,
@@ -29,6 +30,9 @@ export function DesktopWeather({
   isLoading: boolean;
 }) {
   const { tempUnit } = useTempUnitStore();
+  const isDay07Feb2024OrLater =
+    new Date().getTime() >= new Date(2024, 1, 7).getTime();
+
   return (
     <Flex className="max-w-[1440px] m-auto w-full p-4 gap-4">
       <aside
@@ -45,7 +49,7 @@ export function DesktopWeather({
             "opacity-50 transition-opacity": isLoading,
           })}
         >
-          <SearchCity />
+          {isDay07Feb2024OrLater ? <SearchCity /> : <CommandDialogDemo />}
           <Spotlight
             className="justify-center flex flex-col h-full border-sky-50 border-2 rounded-lg"
             style={{
