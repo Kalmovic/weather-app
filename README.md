@@ -25,6 +25,7 @@ This app took me approximately 4-5 days to complete.
 
 - React
 - Zustand
+- Local Storage
 - Tailwind
 - Shadcn/ui
 - Radix ui
@@ -34,6 +35,13 @@ This app took me approximately 4-5 days to complete.
 - Recharts
 - Cypress
 - Docker
+
+## Considerations
+
+- I used Zustand for state management because it's a simple and lightweight state management library that I've used before and I'm familiar with.
+- I used Local Storage to persist the state in the browser so that the user can get the preferred configuration (Celsius or Fahrenheit) and the history when they return to the app.
+- I used Tailwind/Shacnui/Radixui for styling due to speed + accessibility.
+- I used React Router Dom for routing because it's a two page only app with small number of API calls. So I used a routing fetch strategy to fetch the data when the user navigates to the page. With more complex apps I would use a data fetching library like React Query.
 
 ## Installation
 
